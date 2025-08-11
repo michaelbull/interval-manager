@@ -1,0 +1,11 @@
+[versions]
+kotlin = "2.2.0"
+versions-plugin = "0.52.0"
+kotlin-result = "2.1.0"
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions-plugin" }
+
+[libraries]
+kotlin-result = { module = "com.michael-bull.kotlin-result:kotlin-result", version.ref = "kotlin-result" }
