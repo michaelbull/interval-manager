@@ -3,7 +3,7 @@ package com.github.michaelbull.interval
 import java.util.NavigableSet
 import java.util.TreeSet
 
-private val compareIntervalsByStart = compareBy<Interval> { (start, _) -> start }
+private val compareIntervalsByStart = compareBy(Interval::first)
 private val INTERVAL_MIN = intArrayOf(INTERVAL_START_MIN, INTERVAL_END_INCLUSIVE_MIN)
 
 class IntervalManager {
