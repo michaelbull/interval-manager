@@ -2,6 +2,14 @@ package com.github.michaelbull.interval
 
 typealias Interval = IntArray
 
+private const val INTERVAL_LENGTH = 2
+
+private const val INTERVAL_START_MIN = 0
+private const val INTERVAL_END_MIN = 0
+
+private const val INTERVAL_START_MAX = Int.MAX_VALUE
+private const val INTERVAL_END_MAX = Int.MAX_VALUE
+
 class IntervalManager {
 
     /**
@@ -21,17 +29,17 @@ class IntervalManager {
     }
 
     private fun checkInterval(interval: IntArray) {
-        require(interval.size == 2) {
-            "interval.size must be exactly 2, but was ${interval.size}"
+        require(interval.size == INTERVAL_LENGTH) {
+            "interval.size must be exactly $INTERVAL_LENGTH, but was ${interval.size}"
         }
 
         val (start, end) = interval
 
-        require(start >= 0) {
+        require(start >= INTERVAL_START_MIN) {
             "interval.start must be non-negative, but was $start"
         }
 
-        require(end >= 0) {
+        require(end >= INTERVAL_END_MIN) {
             "interval.end must be non-negative, but was $start"
         }
 
