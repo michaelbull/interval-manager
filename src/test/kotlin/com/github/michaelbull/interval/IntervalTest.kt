@@ -2,6 +2,8 @@ package com.github.michaelbull.interval
 
 import kotlin.test.Test
 import kotlin.test.assertFailsWith
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class IntervalTest {
 
@@ -52,5 +54,25 @@ class IntervalTest {
         assertFailsWith<IllegalArgumentException> {
             checkInterval(intArrayOf(20, 20))
         }
+    }
+
+    @Test
+    fun `intersects overlapping interval`() {
+        assertTrue(intArrayOf(1, 5) intersects intArrayOf(3, 7))
+    }
+
+    @Test
+    fun `intersects contained interval`() {
+        assertTrue(intArrayOf(1, 10) intersects intArrayOf(3, 7))
+    }
+
+    @Test
+    fun `intersects contiguous interval`() {
+        assertFalse(intArrayOf(1, 5) intersects intArrayOf(5, 8))
+    }
+
+    @Test
+    fun `intersects disjoint interval`() {
+        assertFalse(intArrayOf(1, 4) intersects intArrayOf(5, 8))
     }
 }

@@ -43,6 +43,43 @@ class IntervalManager {
     }
 
     /**
+     * Removes an interval, splitting or trimming as needed.
+     */
+    fun removeInterval(interval: IntArray) {
+        checkInterval(interval)
+
+        val (start, endInclusive) = interval
+
+        val removals = mutableListOf<Interval>()
+        val additions = mutableListOf<Interval>()
+
+        val intersectionWindow = intervals.subsetUpTo(endInclusive)
+
+        for (candidate in intersectionWindow) {
+            if (interval intersects candidate) {
+                removals += candidate
+
+                val (candidateStart, candidateEndInclusive) = candidate
+
+                /* if the candidate starts before, add back the leading interval [candidateStart,start] */
+                if (candidateStart < start) {
+                    val head = intArrayOf(candidateStart, start)
+                    additions += head
+                }
+
+                /* if the candidate ends after, add back the trailing interval [endInclusive,candidateEndInclusive] */
+                if (candidateEndInclusive > endInclusive) {
+                    val tail = intArrayOf(endInclusive, candidateEndInclusive)
+                    additions += tail
+                }
+            }
+        }
+
+        intervals.removeAll(removals)
+        intervals.addAll(additions)
+    }
+
+    /**
      * Returns the list of merged intervals, sorted by start time.
      */
     fun getIntervals(): List<Interval> {

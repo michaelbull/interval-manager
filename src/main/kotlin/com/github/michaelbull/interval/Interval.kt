@@ -29,3 +29,12 @@ fun checkInterval(interval: IntArray) {
         "interval must be non-empty, but was [${start}..${endInclusive}]"
     }
 }
+
+/**
+ * Returns `true` if two [Intervals][Interval] have a non-zero-length overlap.
+ */
+infix fun Interval.intersects(other: Interval): Boolean {
+    checkInterval(this)
+    checkInterval(other)
+    return this[0] < other[1] && this[1] > other[0]
+}
