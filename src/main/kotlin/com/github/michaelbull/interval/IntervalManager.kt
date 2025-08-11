@@ -68,7 +68,7 @@ class IntervalManager {
 
         val (start, endInclusive) = interval
 
-        val removals = mutableListOf<Interval>()
+        val removals = mutableSetOf<Interval>()
         val additions = mutableListOf<Interval>()
 
         val intersectionWindow = intervals.subSetUpTo(endInclusive)
@@ -93,19 +93,7 @@ class IntervalManager {
             }
         }
 
-        /*
-         * removing a Set ensures that the sets hash-based structure
-         * is used to check for presence in the intervals TreeSet,
-         * as opposed to removing a List which will scan and compare
-         * each element in the list one-by-one
-         *
-         * the creation of the set is O(k) where k is the size of the removals,
-         * meaning that the removeAll beneath becomes O(k * log N), resulting in
-         * a total time complexity of O(k) + O(k * log N) for removing logic
-         */
-        val removalsSet = removals.toSet() // O(k)
-        intervals.removeAll(removalsSet) // O(k * log N)
-
+        intervals.removeAll(removals) // O(k * log N)
         intervals.addAll(additions) // 2k * O(log N) worst case, depending on whether each interval is split into two
     }
 
