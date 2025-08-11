@@ -26,6 +26,6 @@ fun checkInterval(interval: IntArray) {
     }
 
     require(endInclusive > start) {
-        "interval but be non-empty, but was [${start}..${endInclusive}]"
+        "interval must be non-empty, but was [${start}..${endInclusive}]"
     }
 }
