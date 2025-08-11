@@ -15,7 +15,7 @@ class IntervalManager {
      *
      * This function operates at a time complexity of **O(k * log N)**, where:
      * - `N` is the size of the [intervals] set.
-     * - `k` is the number of [intervals][Interval] in the set can be merged with the [interval to add][interval].
+     * - `k` is the number of [intervals][Interval] in the set that can be merged with the [interval to add][interval].
      *
      * This efficiency is achieved by using the backing [TreeSet]s fast lookups (log N) to only operate on the `k`
      * intervals that are actually affected.
