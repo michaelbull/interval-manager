@@ -66,7 +66,6 @@ The `addInterval` method is designed to be highly efficient by minimizing the nu
 1. **Search**
    - Instead of scanning all `N` intervals, we use the `TreeSet.subSet` method to create a candidate window.
    - This window contains only the intervals that could possibly overlap or be adjacent to the new interval.
-   - This is an `O(log N)` operation.
 
 2. **Iterate and Merge**
    - We loop through the candidate window.
