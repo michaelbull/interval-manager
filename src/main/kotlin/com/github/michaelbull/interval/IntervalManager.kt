@@ -100,8 +100,8 @@ class IntervalManager {
          * each element in the list one-by-one
          *
          * the creation of the set is O(k) where k is the size of the removals,
-         * meaning that the removeAll beneath becomes O(k * log N), result in a
-         * totalling complexity of O(k) + O(k * log N) for removing
+         * meaning that the removeAll beneath becomes O(k * log N), resulting in
+         * a total time complexity of O(k) + O(k * log N) for removing logic
          */
         val removalsSet = removals.toSet() // O(k)
         intervals.removeAll(removalsSet) // O(k * log N)
