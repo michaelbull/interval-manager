@@ -22,7 +22,7 @@ fun checkInterval(interval: IntArray) {
     }
 
     require(endInclusive >= INTERVAL_END_INCLUSIVE_MIN) {
-        "interval.end must be non-negative, but was $start"
+        "interval.endInclusive must be non-negative, but was $endInclusive"
     }
 
     require(endInclusive > start) {
