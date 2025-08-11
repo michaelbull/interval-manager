@@ -1,5 +1,7 @@
 # Interval Manager Tech Test
 
+[![CI Status](https://github.com/michaelbull/interval-manager/actions/workflows/ci.yaml/badge.svg)](https://github.com/michaelbull/interval-manager/actions?query=workflow%3Aci)
+
 ## Setup
 
 1. Clone the repository
